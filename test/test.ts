@@ -517,52 +517,6 @@ describe('PR Body Updater Tests', () => {
     expect(mockPullsUpdate).not.toHaveBeenCalled();
   });
 
-  it('should read file content and set PR body to content', async () => {
-    const mockGetInput = jest.fn((name: string) => {
-      switch (name) {
-        case 'content':
-          return 'test-file.txt';
-        case 'token':
-          return 'mock-token';
-        case 'regex':
-          return '.*';
-        case 'contentIsFilePath':
-          return 'true';
-        default:
-          return '';
-      }
-    });
-
-    const fs = require('fs');
-    const mockReadFileSync = jest
-      .spyOn(fs, 'readFileSync')
-      .mockReturnValue('FILE CONTENT FROM DISK');
-
-    jest.doMock('@actions/core', () => {
-      return {
-        ...core,
-        getInput: mockGetInput,
-        notice: mockNotice,
-        setFailed: mockSetFailed,
-      };
-    });
-
-    const { updatePullRequestBody } = require('../src/pr');
-    await updatePullRequestBody();
-
-    expect(mockReadFileSync).toHaveBeenCalledWith('test-file.txt', 'utf8');
-    expect(mockPullsGet).toHaveBeenCalled();
-    expect(mockNotice).toHaveBeenCalledWith(
-      'Match found in PR body. Replacing matched section.'
-    );
-    expect(mockPullsUpdate).toHaveBeenCalledWith({
-      owner: 'owner',
-      repo: 'repo',
-      pull_number: 456,
-      pullRequestDescription: 'FILE CONTENT FROM DISK',
-    });
-  });
-
   it('should lookup the PR via SHA and set content', async () => {
     const mockGetInput = jest.fn((name: string) => {
       switch (name) {
@@ -701,5 +655,58 @@ describe('PR Body Updater Tests', () => {
     );
     expect(mockPullsGet).not.toHaveBeenCalled();
     expect(mockPullsUpdate).not.toHaveBeenCalled();
+  });
+
+  it('should read file content and set PR body to content', async () => {
+    const mockGetInput = jest.fn((name: string) => {
+      switch (name) {
+        case 'content':
+          return 'test-file.txt';
+        case 'token':
+          return 'mock-token';
+        case 'regex':
+          return '.*';
+        case 'contentIsFilePath':
+          return 'true';
+        default:
+          return '';
+      }
+    });
+
+    const fs = require('fs');
+    const originalReadFileSync = fs.readFileSync;
+    const mockReadFileSync = jest
+      .spyOn(fs, 'readFileSync')
+      .mockImplementation((...args: any[]) => {
+        const [path] = args;
+        if (path === 'test-file.txt') {
+          return 'FILE CONTENT FROM DISK';
+        }
+        return originalReadFileSync(...args);
+      });
+
+    jest.doMock('@actions/core', () => {
+      return {
+        ...core,
+        getInput: mockGetInput,
+        notice: mockNotice,
+        setFailed: mockSetFailed,
+      };
+    });
+
+    const { updatePullRequestBody } = require('../src/pr');
+    await updatePullRequestBody();
+
+    expect(mockReadFileSync).toHaveBeenCalledWith('test-file.txt', 'utf8');
+    expect(mockPullsGet).toHaveBeenCalled();
+    expect(mockNotice).toHaveBeenCalledWith(
+      'Match found in PR body. Replacing matched section.'
+    );
+    expect(mockPullsUpdate).toHaveBeenCalledWith({
+      owner: 'owner',
+      repo: 'repo',
+      pull_number: 456,
+      pullRequestDescription: 'FILE CONTENT FROM DISK',
+    });
   });
 });
