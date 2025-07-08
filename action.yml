@@ -1,0 +1,43 @@
+name: 'PR Description Updater'
+description: 'Updates pull request description with content using regex matching and replacement'
+author: 'step-security'
+
+inputs:
+  content:
+    description: 'Content to use for PR description update or file path if contentIsFilePath is true'
+    required: true
+  contentIsFilePath:
+    description: 'Whether content input is a file path (true) or direct content (false)'
+    required: false
+    default: 'false'
+  contentRegex:
+    description: 'Regex pattern to extract specific content from the content input'
+    required: false
+    default: ''
+  contentRegexFlags:
+    description: 'Regex flags for contentRegex (e.g., g, i, m, s)'
+    required: false
+    default: ''
+  regex:
+    description: 'Regex pattern to match in PR body for replacement'
+    required: false
+    default: '---.*'
+  regexFlags:
+    description: 'Regex flags for regex pattern (e.g., g, i, m, s)'
+    required: false
+    default: ''
+  appendContentOnMatchOnly:
+    description: 'Only update PR body if regex matches (true) or always update (false)'
+    required: false
+    default: 'false'
+  token:
+    description: 'GitHub token for API access'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'edit-3'
+  color: 'blue'
