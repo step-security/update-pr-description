@@ -2,8 +2,6 @@ import { describe, it, expect, jest, beforeEach } from '@jest/globals';
 import * as core from '@actions/core';
 import axios from 'axios';
 
-const originalEnv = process.env;
-// console.log(originalEnv)
 
 // Auto-generated unit tests for PR body updater
 describe('PR Body Updater Tests', () => {
@@ -33,8 +31,6 @@ describe('PR Body Updater Tests', () => {
         { number: 458, head: { ref: 'main' }, state: 'draft' },
       ],
     } as never);
-
-    process.env = { ...originalEnv };
 
     jest.resetModules();
     jest.doMock('@actions/github', () => {
