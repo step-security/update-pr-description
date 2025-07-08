@@ -105,7 +105,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'new PR body',
+      body: 'new PR body',
     });
     expect(mockListPRs).not.toHaveBeenCalled();
     expect(mockSetFailed).not.toHaveBeenCalled();
@@ -147,7 +147,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'REPLACEMENT TEXT',
+      body: 'REPLACEMENT TEXT',
     });
   });
 
@@ -187,7 +187,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'CASE INSENSITIVE MATCH',
+      body: 'CASE INSENSITIVE MATCH',
     });
   });
 
@@ -231,7 +231,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'NEWLINE REPLACEMENT',
+      body: 'NEWLINE REPLACEMENT',
     });
   });
 
@@ -275,8 +275,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription:
-        'GLOBAL REPLACEMENT text GLOBAL REPLACEMENT body GLOBAL REPLACEMENT end',
+      body: 'GLOBAL REPLACEMENT text GLOBAL REPLACEMENT body GLOBAL REPLACEMENT end',
     });
   });
 
@@ -316,7 +315,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'existing PR body\nAPPENDED CONTENT',
+      body: 'existing PR body\nAPPENDED CONTENT',
     });
   });
 
@@ -395,7 +394,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'extracted content',
+      body: 'extracted content',
     });
   });
 
@@ -437,7 +436,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'matchmatchmatch',
+      body: 'matchmatchmatch',
     });
   });
 
@@ -475,7 +474,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'NEW CONTENT FOR EMPTY BODY',
+      body: 'NEW CONTENT FOR EMPTY BODY',
     });
   });
 
@@ -583,7 +582,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'CONTENT FROM SHA LOOKUP',
+      body: 'CONTENT FROM SHA LOOKUP',
     });
   });
 
@@ -705,7 +704,7 @@ describe('PR Body Updater Tests', () => {
       owner: 'owner',
       repo: 'repo',
       pull_number: 456,
-      pullRequestDescription: 'FILE CONTENT FROM DISK',
+      body: 'FILE CONTENT FROM DISK',
     });
   });
 });

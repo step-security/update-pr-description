@@ -87,12 +87,12 @@ export async function updatePullRequestBody(): Promise<void> {
     notice('No match and appendContentOnMatchOnly is true. Skipping update.');
     return;
   }
-
+  notice(`new PR description: ${pullRequestDescription}`);
   await octokit.rest.pulls.update({
     owner,
     repo,
     pull_number: pullRequestNumber,
-    pullRequestDescription,
+    body: pullRequestDescription,
   });
   notice('Pull request body updated successfully.');
 }
