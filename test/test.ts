@@ -2,7 +2,6 @@ import { describe, it, expect, jest, beforeEach } from '@jest/globals';
 import * as core from '@actions/core';
 import axios from 'axios';
 
-
 // Auto-generated unit tests for PR body updater
 describe('PR Body Updater Tests', () => {
   let mockNotice: jest.Mock;
