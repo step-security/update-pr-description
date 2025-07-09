@@ -1,8 +1,8 @@
 {
-  "name": "pr-description",
+  "name": "update-pr-description",
   "version": "1.0.0",
   "description": "Github action to change PR description",
-  "main": "index.js",
+  "main": "build/src/index.js",
   "scripts": {
     "compile": "tsc",
     "test": "jest",

@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update PR Description
-        uses: step-security/pr-description@v1
+        uses: step-security/update-pr-description@v1
         with:
           content: |
             ## Summary
@@ -68,7 +68,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update PR Description
-        uses: step-security/pr-description@v1
+        uses: step-security/update-pr-description@v1
         with:
           content: .github/pr-template.md
           contentIsFilePath: true
@@ -93,7 +93,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update PR Description
-        uses: step-security/pr-description@v1
+        uses: step-security/update-pr-description@v1
         with:
           content: |
             <!-- START_EXTRACT -->
@@ -122,7 +122,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update PR Description
-        uses: step-security/pr-description@v1
+        uses: step-security/update-pr-description@v1
         with:
           content: '**UPDATED**'
           regex: 'todo'
@@ -145,7 +145,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update PR Description
-        uses: step-security/pr-description@v1
+        uses: step-security/update-pr-description@v1
         with:
           content: |
             ## Automated Update
