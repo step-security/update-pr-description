@@ -1,0 +1,40 @@
+{
+  "name": "update-pr-description",
+  "version": "1.0.0",
+  "description": "Github action to change PR description",
+  "main": "build/src/index.js",
+  "scripts": {
+    "compile": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "npm run test && npm run compile && ncc build build/src/index.js -o dist",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "step-security-maintained-actions",
+    "Github",
+    "Action",
+    "Update",
+    "PR"
+  ],
+  "author": "step-security",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.10",
+    "@vercel/ncc": "^0.38.3",
+    "dotenv": "^17.0.1",
+    "jest": "^30.0.4",
+    "prettier": "^3.6.2",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "axios": "^1.10.0"
+  }
+}
