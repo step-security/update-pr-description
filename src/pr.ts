@@ -10,7 +10,7 @@ async function validateSubscription(): Promise<void> {
   try {
     await axios.get(API_URL, { timeout: 3000 });
   } catch (e) {
-    if (isAxiosError(e) && e.response) {
+    if (isAxiosError(e) && e.response?.status === 403) {
       error('Subscription is not valid. Reach out to support@stepsecurity.io');
       process.exit(1);
     } else {
