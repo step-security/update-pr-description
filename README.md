@@ -1,3 +1,5 @@
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
+
 # PR Description Updater
 
 A GitHub Action that updates pull request descriptions using regex patterns for content matching and replacement. This action allows you to dynamically update PR descriptions with content from files or direct text input, supporting various regex matching strategies.
