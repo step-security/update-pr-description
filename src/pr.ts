@@ -15,7 +15,7 @@ async function validateSubscription(): Promise<void> {
     repoPrivate = eventData?.repository?.private
   }
 
-  const upstream = 'step-security/update-pr-description'
+  const upstream = 'nefrob/pr-description'
   const action = process.env.GITHUB_ACTION_REPOSITORY
   const docsUrl =
     'https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions'
