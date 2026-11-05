@@ -4,10 +4,23 @@ author: 'step-security'
 
 inputs:
   content:
+<<<<<<< fa944182b4987ab867fdad1ac2b7084135e6e773
     description: 'Content to use for PR description update or file path if contentIsFilePath is true'
     required: true
   contentIsFilePath:
     description: 'Whether content input is a file path (true) or direct content (false)'
+=======
+    description: Content to append or replace in the PR body.
+    required: true
+  contentIsFilePath:
+    description: Whether the content is a file path.
+    required: false
+  contentRegex:
+    description: Regex string to match the content.
+    required: false
+  contentRegexFlags:
+    description: Content match regex flags to use.
+>>>>>>> 63373b7e9b7c70175211bbcfab3296d137705f36
     required: false
     default: 'false'
   contentRegex:
@@ -19,10 +32,15 @@ inputs:
     required: false
     default: ''
   regex:
+<<<<<<< fa944182b4987ab867fdad1ac2b7084135e6e773
     description: 'Regex pattern to match in PR body for replacement'
+=======
+    description: Regex string to match and replace the description.
+>>>>>>> 63373b7e9b7c70175211bbcfab3296d137705f36
     required: false
     default: '---.*'
   regexFlags:
+<<<<<<< fa944182b4987ab867fdad1ac2b7084135e6e773
     description: 'Regex flags for regex pattern (e.g., g, i, m, s)'
     required: false
     default: ''
@@ -41,3 +59,21 @@ runs:
 branding:
   icon: 'edit-3'
   color: 'blue'
+=======
+    description: Description match regex flags to use.
+    required: false
+  appendContentOnMatchOnly:
+    description: Whether to skip appending the content to the PR body if no regex matches are found.
+    default: "false"
+  token:
+    description: GitHub access token.
+    required: true
+
+runs:
+  using: node24
+  main: dist/index.js
+
+branding:
+  icon: align-left
+  color: white
+>>>>>>> 63373b7e9b7c70175211bbcfab3296d137705f36

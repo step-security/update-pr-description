@@ -1,2 +1,22 @@
+<<<<<<< fa944182b4987ab867fdad1ac2b7084135e6e773
 node_modules/
 build/
+=======
+# dependencies
+node_modules
+
+# linting
+.eslintcache
+
+# nodejs
+.tool-versions
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+>>>>>>> 63373b7e9b7c70175211bbcfab3296d137705f36
